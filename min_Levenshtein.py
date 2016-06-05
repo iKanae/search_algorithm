@@ -7,17 +7,15 @@ def getMinValue(x,y):
         return 1
 
 def editDist(a,b):
-    a='0'+a
-    b='0'+b
-    lenA=len(a)
-    lenB=len(b)
+    lenA=len(a)+1
+    lenB=len(b)+1
     r=np.zeros((lenA,lenB))
-    for i in range(len(a)):
-        for j in range(len(b)):
+    for i in range(lenA):
+        for j in range(lenB):
             if i==1:
                 r[i,j]=j
             elif j==1:
                 r[i,j]=i
             else:
-                r[i,j]=min(r[i-1,j]+1,r[i,j-1]+1,r[i-1,j-1]+getMinValue(a[i],b[j]))
-    return r[lenA-1,lenB-1]
+                r[i,j]=min(r[i-1,j]+1,r[i,j-1]+1,r[i-1,j-1]+getMinValue(a[i-1],b[j-1]))
+    return r
