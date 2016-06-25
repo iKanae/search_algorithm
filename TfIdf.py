@@ -58,7 +58,7 @@ def getIdf(all_text):
             for text in all_text:
                 text=getText(text)
                 textwordlist=getWordlist([text])
-                if  word in textwordlist:
+                if  word in textwordlist>0:
                     isnum=+isnum+1
             IDF[word]=math.log(docnum/(isnum+1))
         else:
