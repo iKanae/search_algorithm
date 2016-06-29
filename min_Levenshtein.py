@@ -12,10 +12,11 @@ def editDist(a,b):
     r=np.zeros((lenA,lenB))
     for i in range(lenA):
         for j in range(lenB):
-            if i==1:
+            if i==0 and j>0:
                 r[i,j]=j
-            elif j==1:
+            elif j==0 and i>0:
                 r[i,j]=i
-            else:
+            elif i>=1 and j>=1:
                 r[i,j]=min(r[i-1,j]+1,r[i,j-1]+1,r[i-1,j-1]+getMinValue(a[i-1],b[j-1]))
     return r
+
